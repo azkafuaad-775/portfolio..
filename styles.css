@@ -28,6 +28,27 @@ body {
     #faf0ff;
   font-family: Inter, Arial, sans-serif;
   overflow-x: hidden;
+  scrollbar-color: rgba(191, 160, 242, 0.75) rgba(247, 233, 255, 0.85);
+  scrollbar-width: thin;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: rgba(247, 233, 255, 0.9);
+  border-radius: 999px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(191, 160, 242, 0.9), rgba(214, 183, 255, 0.95));
+  border-radius: 999px;
+  border: 3px solid rgba(247, 233, 255, 0.9);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(172, 137, 242, 0.95), rgba(199, 160, 255, 0.98));
 }
 
 body::before {
@@ -314,22 +335,23 @@ a {
   aspect-ratio: 1;
   place-items: center;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), transparent 45%),
-    radial-gradient(circle at 60% 60%, rgba(217, 184, 255, 0.55), transparent 50%),
-    linear-gradient(135deg, rgba(255, 244, 255, 0.9), rgba(236, 215, 255, 0.7));
+  background: linear-gradient(135deg, rgba(255, 250, 255, 0.95), rgba(241, 229, 255, 0.98));
+  box-shadow: 0 30px 90px rgba(142, 93, 196, 0.12);
   position: relative;
+  overflow: hidden;
+  animation: driftSoft 14s ease-in-out infinite;
 }
 
-.profile-orbit::after {
+.profile-orbit::before {
   content: '';
   position: absolute;
-  inset: 12% 10%;
+  inset: 10%;
   border-radius: 50%;
+  border: 2px solid rgba(195, 160, 248, 0.45);
   background: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
-  filter: blur(10px);
-  animation: pulseGlow 2.8s ease-in-out infinite;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
+  animation: ringGlow 4.6s ease-in-out infinite;
 }
 
 .profile-photo {
@@ -395,6 +417,12 @@ a {
   padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 72px);
   background: var(--paper);
   overflow: hidden;
+}
+
+.intro-band,
+.split-section,
+.interests-section {
+  /* section variants kept for structure and future styling */
 }
 
 .section::before {
@@ -728,6 +756,26 @@ a {
   50% {
     transform: scale(1.08);
     opacity: 0.25;
+  }
+}
+
+@keyframes ringGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.3;
+  }
+}
+
+@keyframes driftSoft {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-6px, -8px) rotate(2deg);
   }
 }
 
