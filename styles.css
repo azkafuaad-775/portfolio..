@@ -26,6 +26,11 @@ body {
   font-family: Inter, Arial, sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', Inter, Arial, sans-serif;
+  font-weight: 700;
+}
+
 a {
   color: inherit;
   text-decoration: none;
